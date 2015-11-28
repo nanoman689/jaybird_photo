@@ -1,0 +1,25 @@
+{
+  "name": "jaybird_photo",
+  "description": "Gallery page using Flickr API",
+  "main": "index.js",
+  "authors": [
+    "Jason Thomas"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "Flickr",
+    "API",
+    "photo",
+    "gallery"
+  ],
+  "homepage": "https://github.com/nanoman689/jaybird_photo",
+  "moduleType": [],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
