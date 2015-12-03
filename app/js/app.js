@@ -17,17 +17,18 @@ angular.module('myApp', ['ngRoute'])
             if($scope.frob !== ''){
                 var key="9bf438c9008c14b50c8114ee607b8752";
                 var secret="f70ebe3932a951df";
-                var login = secret+"api_key"+key+"frob"+$scope.frob+"methodflickr.auth.getToken";
+                var login = secret+"api_key"+key+"callbackangular.callbacks._0frob"+$scope.frob+"methodflickr.auth.getToken";
                 var hash = md5(login);
                 var data = {"method": "flickr.auth.getToken", 
                             "api_key": "9bf438c9008c14b50c8114ee607b8752",
                             "frob": $scope.frob,
-                            "api_sig": hash};
-                    $http({
-                    url: 'http://flickr.com/services/rest/',
-                    method: 'GET',
-                    data: data,
-                })
+                            "api_sig": hash,
+                            "callback": "JSON_CALLBACK"};
+                var config = {
+                            "method":"GET",
+                            "params":data
+                            }
+                $http.jsonp('http://flickr.com/services/rest/', config)
                 .then(function(data, status, headers, config) {
                     console.log('Success!');
                     console.log(data);
