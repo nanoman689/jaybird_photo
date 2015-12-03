@@ -26,7 +26,8 @@ angular.module('myApp', ['ngRoute'])
                             "callback": "JSON_CALLBACK"};
                 var config = {
                             "method":"GET",
-                            "params":data
+                            "params":data,
+                            "responseType": "JSONP"
                             }
                 $http.jsonp('http://flickr.com/services/rest/', config)
                 .then(function(data, status, headers, config) {
