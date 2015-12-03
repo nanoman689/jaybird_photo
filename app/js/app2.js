@@ -17,14 +17,14 @@ angular.module('myApp', ['ngRoute'])
             if($scope.frob !== ''){
                 var key="9bf438c9008c14b50c8114ee607b8752";
                 var secret="f70ebe3932a951df";
-                var login = secret+"api_key"+key+"callbackangular.callbacks._0formatjsonpfrob"+$scope.frob+"methodflickr.auth.getToken";
+                var login = secret+"api_key"+key+"callbackangular.callbacks._0formatjsonfrob"+$scope.frob+"methodflickr.auth.getToken";
                 var hash = md5(login);
                 var data = {"method": "flickr.auth.getToken", 
                             "api_key": "9bf438c9008c14b50c8114ee607b8752",
                             "frob": $scope.frob,
                             "api_sig": hash,
                             "callback": "JSON_CALLBACK",
-                            "format": "jsonp"};
+                            "format": "json"};
                 var config = {
                             "method":"GET",
                             "params":data,
