@@ -17,7 +17,7 @@ angular.module('myApp', ['ngRoute'])
             if($scope.frob !== ''){
                 var key="9bf438c9008c14b50c8114ee607b8752";
                 var secret="f70ebe3932a951df";
-                var login = secret+"api_key"+key+"frob"+$scope.frob+"jsoncallbackangular.callbacks._0formatjsonmethodflickr.auth.getToken";
+                var login = secret+"api_key"+key+"formatjsonfrob"+$scope.frob+"jsoncallbackangular.callbacks._0methodflickr.auth.getToken";
                 var hash = md5(login);
                 var data = {"method": "flickr.auth.getToken", 
                             "api_key": "9bf438c9008c14b50c8114ee607b8752",
