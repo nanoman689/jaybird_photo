@@ -15,8 +15,8 @@ angular.module('myApp', ['ngRoute'])
             window.location=url; 
         }
             if($scope.frob !== ''){
-                var key="9bf438c9008c14b50c8114ee607b8752";
-                var secret="f70ebe3932a951df";
+                var key = "9bf438c9008c14b50c8114ee607b8752";
+                var secret = "f70ebe3932a951df";
                 var login = secret+"api_key"+key+"formatjsonfrob"+$scope.frob+"jsoncallbackangular.callbacks._0methodflickr.auth.getToken";
                 var hash = md5(login);
                 var data = {"method": "flickr.auth.getToken", 
@@ -34,9 +34,23 @@ angular.module('myApp', ['ngRoute'])
                 .then(function(data, status, headers, config) {
                     // do the third step here 
                     //
+                    // called when the data is available
                     console.log('Success!');
                     console.log(data);
-                    // called when the data is available
+                    var keyToken = "9bf438c9008c14b50c8114ee607b8752";
+                    var secretT = "f70ebe3932a951df";
+                    var loginT = secretT+"api_key"+key+"auth_token"+hash;
+                    var hashT = md5(loginT);
+                    var data = {
+                            "method": "flickr.people.getInfo",
+                            "api_key": "9bf438c9008c14b50c8114ee607b8752";
+                    }   
+                    var config = {
+                            "method":"GET",
+                            "params":data,
+                            "responseType": "JSONP"
+                    }
+                    
                 },
                 function(data, status, headers, config) {
                     console.log('Failure :(');
