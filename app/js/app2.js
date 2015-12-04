@@ -33,6 +33,7 @@ angular.module('myApp', ['ngRoute'])
                 $http.jsonp('http://flickr.com/services/rest/', config)
                 .then(function(data, status, headers, config) {
                     // do the third step here 
+                    console.log(data.auth.perms.token);
                     //
                     console.log('Success!');
                     console.log(data);
