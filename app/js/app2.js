@@ -32,6 +32,8 @@ angular.module('myApp', ['ngRoute'])
                             }
                 $http.jsonp('http://flickr.com/services/rest/', config)
                 .then(function(data, status, headers, config) {
+                    // do the third step here 
+                    //
                     console.log('Success!');
                     console.log(data);
                     // called when the data is available
