@@ -55,7 +55,7 @@ angular.module('myApp', ['ngRoute'])
                             "responseType": "JSONP"
                     }
                     $http({url:'http://flickr.com/services/rest',
-                           method:GET,
+                           method:"GET",
                            data:data
                           })
                     .then(function(data, status, headers, config){
