@@ -36,23 +36,34 @@ angular.module('myApp', ['ngRoute'])
                     //
                     // called when the data is available
                     console.log('Success!');
-                    console.log(data);
+                    console.log(data.data.auth.token._content);
                     // Auth Token is in the url??
-                    
+                    var authToken = data.data.auth.token._content;
                     var keyToken = "9bf438c9008c14b50c8114ee607b8752";
                     var secretT = "f70ebe3932a951df";
-                    var loginT = secretT+"api_key"+key+"auth_token"+hash;
+                    var loginT = secretT+"api_key"+keyToken+"auth_token"+authToken+"methodflickr.people.getInfo";
                     var hashT = md5(loginT);
                     var data = {
                             "method": "flickr.people.getInfo",
-                            "api_key": "9bf438c9008c14b50c8114ee607b8752"
-                    }   
+                            "api_key": "9bf438c9008c14b50c8114ee607b8752",
+                            "auth_token" : authToken,
+                            "api_sig": hashT
+                    };   
                     var config = {
                             "method":"GET",
                             "params":data,
                             "responseType": "JSONP"
                     }
-                    
+                    $http({url:'http://flickr.com/services/rest',
+                           method:GET,
+                           data:data
+                          })
+                    .then(function(data, status, headers, config){
+                        console.log(data);
+                    },
+                        function(data, status, headers, config) {
+                        console.log('Failure :(');
+                    });
                 },
                 function(data, status, headers, config) {
                     console.log('Failure :(');
