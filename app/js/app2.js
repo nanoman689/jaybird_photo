@@ -38,7 +38,7 @@ angular.module('myApp', ['ngRoute'])
                     console.log('Success!');
                     console.log(data);
                     // Auth Token is in the url??
-                    var authToken = data.auth.token._content;
+                    var authToken = auth.token._content;
                     var keyToken = "9bf438c9008c14b50c8114ee607b8752";
                     var secretT = "f70ebe3932a951df";
                     var loginT = secretT+"api_key"+keyToken+"auth_token"+authToken+"methodflickr.people.getInfo";
