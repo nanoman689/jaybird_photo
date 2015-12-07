@@ -36,7 +36,7 @@ angular.module('myApp', ['ngRoute'])
                     //
                     // called when the data is available
                     console.log('Success!');
-                    console.log(data.auth.token._content);
+                    console.log(data);
                     // Auth Token is in the url??
                     var authToken = data.auth.token._content;
                     var keyToken = "9bf438c9008c14b50c8114ee607b8752";
