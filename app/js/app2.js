@@ -37,13 +37,15 @@ angular.module('myApp', ['ngRoute'])
                     // called when the data is available
                     console.log('Success!');
                     console.log(data);
+                    // Auth Token is in the url??
+                    
                     var keyToken = "9bf438c9008c14b50c8114ee607b8752";
                     var secretT = "f70ebe3932a951df";
                     var loginT = secretT+"api_key"+key+"auth_token"+hash;
                     var hashT = md5(loginT);
                     var data = {
                             "method": "flickr.people.getInfo",
-                            "api_key": "9bf438c9008c14b50c8114ee607b8752";
+                            "api_key": "9bf438c9008c14b50c8114ee607b8752"
                     }   
                     var config = {
                             "method":"GET",
@@ -59,7 +61,7 @@ angular.module('myApp', ['ngRoute'])
                 });
             }    
 });
-                    /*
+/*
 
 Key:
 9bf438c9008c14b50c8114ee607b8752
