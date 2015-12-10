@@ -62,10 +62,7 @@ angular.module('myApp', ['ngRoute'])
                             "params":data,
                             "responseType": "JSONP"
                     }
-                    $http({url:'http://flickr.com/services/rest',
-                           method:"GET",
-                           data:data
-                          })
+                    $http.jsonp('http://flickr.com/services/rest', config)
                     .then(function(data, status, headers, config){
                         console.log(data);
                     },
