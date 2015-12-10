@@ -46,7 +46,7 @@ angular.module('myApp', ['ngRoute'])
                     var userID = data.data.auth.user.nsid;
                     var keyToken = "9bf438c9008c14b50c8114ee607b8752";
                     var secretT = "f70ebe3932a951df";
-                    var loginT = secretT+"api_key"+keyToken+"auth_token"+authToken+"formatJSONmethodflickr.people.getInfonojsoncallback1"+"user_id"+userID;
+                    var loginT = secretT+"api_key"+keyToken+"auth_token"+authToken+"formatjsonjsoncallbackangular.callbacks._0methodflickr.people.getInfo"+"user_id"+userID;
                     var hashT = md5(loginT);
                     var data = {
                             "method": "flickr.people.getInfo",
@@ -54,8 +54,8 @@ angular.module('myApp', ['ngRoute'])
                             "auth_token" : authToken,
                             "api_sig": hashT,
                             "user_id": userID,
-                            "format": "JSON",
-                            "nojsoncallback": "1" 
+                            "format": "json",
+                            "jsoncallback": "JSON_CALLBACK"
                     };   
                     var config = {
                             "method":"GET",
