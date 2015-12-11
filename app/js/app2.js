@@ -4,6 +4,7 @@ angular.module('myApp', ['ngRoute'])
     })
     .controller("flickrController", function($scope, $http){
         $scope.frob = (location.search.split('frob=')[1]||'').split('&')[0];
+        $scope.photos = [];
         console.log("the frob is:" + $scope.frob);
         $scope.flickerLogIn=function(){
             var key="9bf438c9008c14b50c8114ee607b8752";
@@ -65,6 +66,10 @@ angular.module('myApp', ['ngRoute'])
                     $http.jsonp('http://flickr.com/services/rest', config)
                     .then(function(data, status, headers, config){
                         console.log(data);
+                        for ( r=0 ; r < data.data.photos.photo.length; r++ ){
+                            var url="https://farm"+data.data.photos.photo[r].farm+".staticflickr.com/"+data.data.photos.photo[r].server+"/"+data.data.photos.photo[r].id+"_"+data.data.photos.photo[r].secret+".jpg";
+                        $scope.photos.push(url);
+                        }
                     },
                         function(data, status, headers, config) {
                         console.log('Failure :(');
