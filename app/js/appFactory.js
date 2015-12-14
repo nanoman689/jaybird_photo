@@ -20,7 +20,7 @@ angular.module('myApp', ['ngRoute'])
                         "jsoncallback": "JSON_CALLBACK",
                         "format": "json"};
             var config = {
-    			         "method":"GET",
+    			        "method":"GET",
                         "params":data,
                         "responseType": "JSONP"
             }
@@ -35,7 +35,7 @@ angular.module('myApp', ['ngRoute'])
   };
 })
 .controller("flickrController", function($scope, $http){
-        flickrLogin.getToken().then(function(token){
+        $scope.flickrLogin.getToken().then(function(token){
             $scope.token = token;
         })
 });	
