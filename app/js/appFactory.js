@@ -1,7 +1,7 @@
 angular.module('myApp', ['ngRoute'])
 .constant('secret', 'f70ebe3932a951df')
 .constant('key', '9bf438c9008c14b50c8114ee607b8752')
-.factory("flickrService", function($http) {
+.factory("flickrService", function($http, secret, key) {
 	return {
     	fetchPerson: function() {
       		//code to fetch person details
