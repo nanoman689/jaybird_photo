@@ -6,10 +6,44 @@ angular.module('myApp', ['ngRoute'])
     	fetchPerson: function() {
       		//code to fetch person details
     	},
-    	fetchPhotos: function() {
+    	fetchPhotos: function(userID,authToken) {
       		//code to fetch photos of the person
             $scope.photos = [];
-    	},
+            var keyToken = "9bf438c9008c14b50c8114ee607b8752";
+            var secretT = "f70ebe3932a951df";
+            var loginT = secretT+"api_key"+keyToken+"auth_token"+authToken+"formatjsonjsoncallbackangular.callbacks._1methodflickr.people.getPhotos"+"user_id"+userID;
+            var hashT = md5(loginT);
+            var data = {
+                        "method": "flickr.people.getPhotos",
+                        "api_key": "9bf438c9008c14b50c8114ee607b8752",
+                        "auth_token" : authToken,
+                        "api_sig": hashT,
+                        "user_id": userID,
+                        "format": "json",
+                        "jsoncallback": "JSON_CALLBACK"
+                    };   
+            var config = {
+                        "method":"GET",
+                        "params":data,
+                        "responseType": "JSONP"
+                    }
+            var defer = $q.defer();
+            
+            $http.jsonp('http://flickr.com/services/rest', config)
+   
+        .then(function(data, status, headers, config){
+                console.log(data);
+                var photos = [];
+                for ( r=0 ; r < data.data.photos.photo.length; r++ ){
+                            var url="https://farm"+data.data.photos.photo[r].farm+".staticflickr.com/"+data.data.photos.photo[r].server+"/"+data.data.photos.photo[r].id+"_"+data.data.photos.photo[r].secret+".jpg";
+                        photos.push(url);
+                        }
+                defer.resolve(photos);    
+            
+                }
+            );
+            return defer.promise;
+        },
 		getToken: function(frob){  
 	        var login = secret+"api_key"+key+"formatjsonfrob"+frob+"jsoncallbackangular.callbacks._0methodflickr.auth.getToken";
             var hash = md5(login);
@@ -29,7 +63,11 @@ angular.module('myApp', ['ngRoute'])
             $http.jsonp('http://flickr.com/services/rest/', config)
             
         .then(function(data, status, headers, config) {
-		  defer.resolve(data.data.auth.token._content);
+		  var id = {
+              "token": data.data.auth.token._content,
+              "userID": data.data.auth.user.nsid
+          }
+                defer.resolve(id);
 	   });
 	       return defer.promise;   
     }
@@ -41,9 +79,19 @@ angular.module('myApp', ['ngRoute'])
     
     if($scope.frob !== ''){
         flickrService.getToken($scope.frob).then(function(token){
-        $scope.token = token;
+        $scope.token = result.token;
+        $scope.userID = result.userID;    
         console.log($scope.token);
-        })
+        var defer = $q.defer();
+        defer.resolve;
+        return defer.promise;    
+        }).then(function(){
+            flickrService.fetchPhotos($scope.userID, $scope.token).then(
+                function(result){
+                    $scope.photos = results;
+                }
+            );     
+        });
     }
     
     $scope.flickrLogIn=function(){
