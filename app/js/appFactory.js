@@ -78,7 +78,7 @@ angular.module('myApp', ['ngRoute'])
     $scope.frob = (location.search.split('frob=')[1]||'').split('&')[0];
     
     if($scope.frob !== ''){
-        flickrService.getToken($scope.frob).then(function(token){
+        flickrService.getToken($scope.frob).then(function(result){
         $scope.token = result.token;
         $scope.userID = result.userID;    
         console.log($scope.token);
@@ -89,6 +89,7 @@ angular.module('myApp', ['ngRoute'])
             flickrService.fetchPhotos($scope.userID, $scope.token).then(
                 function(result){
                     $scope.photos = results;
+                    console.log($scope.photos);
                 }
             );     
         });
