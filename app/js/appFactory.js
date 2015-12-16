@@ -1,7 +1,7 @@
 angular.module('myApp', ['ngRoute'])
 .constant('secret', 'f70ebe3932a951df')
 .constant('key', '9bf438c9008c14b50c8114ee607b8752')
-.factory("FlickrService", function($http) {
+.factory("flickrService", function($http) {
 	return {
     	fetchPerson: function() {
       		//code to fetch person details
@@ -11,7 +11,7 @@ angular.module('myApp', ['ngRoute'])
             $scope.photos = [];
     	},
 		getToken: function(){
-	       var login = secret+"api_key"+key+"formatjsonfrob"+$scope.frob+"jsoncallbackangular.callbacks._0methodflickr.auth.getToken";
+	        var login = secret+"api_key"+key+"formatjsonfrob"+$scope.frob+"jsoncallbackangular.callbacks._0methodflickr.auth.getToken";
             var hash = md5(login);
             var data = {"method": "flickr.auth.getToken", 
 				        "api_key": "9bf438c9008c14b50c8114ee607b8752",
@@ -25,7 +25,8 @@ angular.module('myApp', ['ngRoute'])
                         "responseType": "JSONP"
             }
 	        var defer = $q.defer();
-                $http.jsonp('http://flickr.com/services/rest/', config)
+            
+            $http.jsonp('http://flickr.com/services/rest/', config)
             
         .then(function(data, status, headers, config) {
 		  defer.resolve(data.data.auth.token._content);
@@ -35,7 +36,8 @@ angular.module('myApp', ['ngRoute'])
   };
 })
 .controller("flickrController", function($scope, $http){
-        $scope.flickrLogin.getToken().then(function(token){
+        // User clicks on button to log into Flickr 
+        $scope.flickrService.getToken().then(function(token){
             $scope.token = token;
         })
 });	
