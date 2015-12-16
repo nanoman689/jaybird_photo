@@ -73,7 +73,7 @@ angular.module('myApp', ['ngRoute'])
     }
   };
 })
-.controller("flickrController", function(flickrService, $scope, $http){
+.controller("flickrController", function(flickrService, $scope, $http, $q){
         // User clicks on button to log into Flickr 
     $scope.frob = (location.search.split('frob=')[1]||'').split('&')[0];
     
