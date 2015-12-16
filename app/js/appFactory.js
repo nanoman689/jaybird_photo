@@ -46,7 +46,7 @@ angular.module('myApp', ['ngRoute'])
         })
     }
     
-    $scope.flickerLogIn=function(){
+    $scope.flickrLogIn=function(){
         var key="9bf438c9008c14b50c8114ee607b8752";
         var secret="f70ebe3932a951df";
         var login=secret+"api_key"+key+"permsread";
