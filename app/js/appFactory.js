@@ -88,7 +88,7 @@ angular.module('myApp', ['ngRoute'])
         }).then(function(){
             flickrService.fetchPhotos($scope.userID, $scope.token).then(
                 function(result){
-                    $scope.photos = results;
+                    $scope.photos = result;
                     console.log($scope.photos);
                 }
             );     
