@@ -82,19 +82,13 @@ angular.module('myApp', ['ngRoute'])
         $scope.token = result.token;
         $scope.userID = result.userID;    
         console.log($scope.token);
-        var defer = $q.defer();
-        defer.resolve;
-        return defer.promise;    
-        }).then(function(){
-            flickrService.fetchPhotos($scope.userID, $scope.token).then(
-                function(result){
-                    $scope.photos = result;
-                    console.log($scope.photos);
-                }
-            );     
-        });
+        return flickrService.fetchPhotos($scope.userID, $scope.token);
+        }).then(function(result){
+            $scope.photos = result;
+            console.log($scope.photos);
+            }
+        );     
     }
-    
     $scope.flickrLogIn=function(){
         var key="9bf438c9008c14b50c8114ee607b8752";
         var secret="f70ebe3932a951df";
