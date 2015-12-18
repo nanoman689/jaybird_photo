@@ -8,7 +8,7 @@ angular.module('myApp', ['ngRoute'])
     	},
     	fetchPhotos: function(userID,authToken) {
       		//code to fetch photos of the person
-            $scope.photos = [];
+            
             var keyToken = "9bf438c9008c14b50c8114ee607b8752";
             var secretT = "f70ebe3932a951df";
             var loginT = secretT+"api_key"+keyToken+"auth_token"+authToken+"formatjsonjsoncallbackangular.callbacks._1methodflickr.people.getPhotos"+"user_id"+userID;
