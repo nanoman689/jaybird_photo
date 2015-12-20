@@ -37,7 +37,6 @@ angular.module('myApp', ['ngRoute'])
                 for ( r=0 ; r < data.data.photos.photo.length; r++ ){
                             var url="https://farm"+data.data.photos.photo[r].farm+".staticflickr.com/"+data.data.photos.photo[r].server+"/"+data.data.photos.photo[r].id+"_"+data.data.photos.photo[r].secret+".jpg";
                         photos.push(url);
-                        console.log(photos);
                         }
                 defer.resolve(photos);    
             
@@ -100,3 +99,20 @@ angular.module('myApp', ['ngRoute'])
         window.location=url; 
     }
 });	
+.config(['$routeProvider', function($routeProvider){
+    $routeProvider.when('/', {
+        templateUrl: './index.html',
+        controller : 'homeCrtl'
+    }).when('/gallery', {
+        templateUrl: './gallery.html',
+        controller : 'galleryCtrl'
+    }).otherwise({
+        redirectTo : '/error'
+    });
+.controller('homeCtrl')['$rootScope', function($rootScope) {
+
+}
+.controller('galleryCtrl')['$scope', 'photos' function($scope,photos) {
+
+}
+                        
