@@ -64,7 +64,7 @@
     Log Into Flickr</button>
       </div>
         <div ng-repeat="photo in photos">
-            <img ng-src="{{photo}}">
+            <a href="{{photo.url}}"><img ng-src="{{photo}}"></a>
         </div>    
     </div><!-- /.container -->
 
