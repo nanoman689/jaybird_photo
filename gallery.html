@@ -1,8 +1,13 @@
 <!DOCTYPE html>
-<div class="Gallery">
-  <p><h4>Gallery View</h4></p>
+<html lang="en" ng-app="myApp">
+<div class="gallery">
+  <p><h4>Gallery Viewer</h4></p>
 </div>
+
+<body ng-controller="flickrController">
 
     <div ng-repeat="photo in photos">
         <img ng-src="{{photo}}">
     </div> 
+
+</body>    
