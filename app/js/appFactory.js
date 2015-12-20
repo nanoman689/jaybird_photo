@@ -37,6 +37,7 @@ angular.module('myApp', ['ngRoute'])
                 for ( r=0 ; r < data.data.photos.photo.length; r++ ){
                             var url="https://farm"+data.data.photos.photo[r].farm+".staticflickr.com/"+data.data.photos.photo[r].server+"/"+data.data.photos.photo[r].id+"_"+data.data.photos.photo[r].secret+".jpg";
                         photos.push(url);
+                        console.log(photos);
                         }
                 defer.resolve(photos);    
             
