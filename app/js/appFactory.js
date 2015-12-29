@@ -73,7 +73,7 @@ angular.module('myApp', ['ngRoute'])
     }
   };
 })
-.controller("flickrController", function(flickrService, $scope, $http, $q){
+.controller("flickrController", function(flickrService, $scope, $http, $q, $location){
         // User clicks on button to log into Flickr 
     $scope.frob = (location.search.split('frob=')[1]||'').split('&')[0];
     
@@ -97,6 +97,9 @@ angular.module('myApp', ['ngRoute'])
         console.log("The hash is:" + hash);
         var url="http://flickr.com/services/auth/?api_key="+key+"&perms=read&api_sig="+hash;
         window.location=url; 
+    }
+    $scope.galleryView = function (){
+        $location.path('/gallery');
     }
 })	
 .config(['$routeProvider', function($routeProvider){
