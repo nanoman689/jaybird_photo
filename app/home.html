@@ -1,0 +1,11 @@
+<div class="starter-template">
+
+<h1>Jaybird Photo Galley</h1>
+<p class="lead">Jaybird Photo Gallery<br> A simple gallery application using Flickr API.</p>
+          
+<button class="my_button" name="buttonName" value="buttonValue" ng-click="flickrLogIn()" ng-if="!frob">
+Log Into Flickr</button>
+</div>
+<div ng-repeat="photo in photos">
+    <a href="./gallery.html"><img ng-src="{{photo}}"></a>
+</div> 

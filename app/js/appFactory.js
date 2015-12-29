@@ -101,19 +101,21 @@ angular.module('myApp', ['ngRoute'])
 })	
 .config(['$routeProvider', function($routeProvider){
     $routeProvider.when('/', {
-        templateUrl: './index.html',
-        controller : 'homeCrtl'
+        templateUrl: './home.html',
+        controller : 'flickrController'
     }).when('/gallery', {
         templateUrl: './gallery.html',
         controller : 'galleryCtrl'
     }).otherwise({
         redirectTo : '/error'
-    });
+    })
     
-.controller('homeCtrl')['$rootScope', function($rootScope) {
+.controller('homeCtrl', ['$rootScope', function($rootScope) {
 
-}
-.controller('galleryCtrl')['$scope', 'photos' function($scope,photos) {
+    
+}])
+.controller('galleryCtrl', ['$scope', 'flickrService', function($scope, flickrService) {
 
-}
+                            
+}]);
                         
