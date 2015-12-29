@@ -108,7 +108,8 @@ angular.module('myApp', ['ngRoute'])
         controller : 'galleryCtrl'
     }).otherwise({
         redirectTo : '/error'
-    })
+    });
+}])
     
 .controller('homeCtrl', ['$rootScope', function($rootScope) {
 
