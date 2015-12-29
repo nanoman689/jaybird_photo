@@ -98,7 +98,7 @@ angular.module('myApp', ['ngRoute'])
         var url="http://flickr.com/services/auth/?api_key="+key+"&perms=read&api_sig="+hash;
         window.location=url; 
     }
-});	
+})	
 .config(['$routeProvider', function($routeProvider){
     $routeProvider.when('/', {
         templateUrl: './index.html',
@@ -109,6 +109,7 @@ angular.module('myApp', ['ngRoute'])
     }).otherwise({
         redirectTo : '/error'
     });
+    
 .controller('homeCtrl')['$rootScope', function($rootScope) {
 
 }
