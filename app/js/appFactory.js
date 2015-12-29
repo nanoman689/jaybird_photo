@@ -2,8 +2,12 @@ angular.module('myApp', ['ngRoute'])
 .constant('secret', 'f70ebe3932a951df')
 .constant('key', '9bf438c9008c14b50c8114ee607b8752')
 .factory("flickrService", function($http, $q, secret, key) {
-	return {
-    	fetchPerson: function() {
+    var photos = [];
+    return {
+    	getPhotos: function(){
+          return photos;  
+        },
+        fetchPerson: function() {
       		//code to fetch person details
     	},
     	fetchPhotos: function(userID,authToken) {
@@ -33,7 +37,7 @@ angular.module('myApp', ['ngRoute'])
    
         .then(function(data, status, headers, config){
                 console.log(data);
-                var photos = [];
+
                 for ( r=0 ; r < data.data.photos.photo.length; r++ ){
                             var url="https://farm"+data.data.photos.photo[r].farm+".staticflickr.com/"+data.data.photos.photo[r].server+"/"+data.data.photos.photo[r].id+"_"+data.data.photos.photo[r].secret+".jpg";
                         photos.push(url);
@@ -98,15 +102,15 @@ angular.module('myApp', ['ngRoute'])
         var url="http://flickr.com/services/auth/?api_key="+key+"&perms=read&api_sig="+hash;
         window.location=url; 
     }
-    $scope.galleryView = function (){
-        $location.path('/gallery');
+    $scope.galleryView = function (id){
+        $location.path('/gallery/'+ id );
     }
 })	
 .config(['$routeProvider', function($routeProvider){
     $routeProvider.when('/', {
         templateUrl: './home.html',
         controller : 'flickrController'
-    }).when('/gallery', {
+    }).when('/gallery/:photoId', {
         templateUrl: './gallery.html',
         controller : 'galleryCtrl'
     }).otherwise({
@@ -114,12 +118,9 @@ angular.module('myApp', ['ngRoute'])
     });
 }])
     
-.controller('homeCtrl', ['$rootScope', function($rootScope) {
-
-    
-}])
-.controller('galleryCtrl', ['$scope', 'flickrService', function($scope, flickrService) {
-
-                            
+.controller('galleryCtrl', ['$scope', '$routeParams', 'flickrService', function($scope, $routeParams, flickrService) {
+    $scope.photos = flickrService.getPhotos();
+    var photoId = $routeParams.photoId;
+    $scope.url = $scope.photos[photoId];
 }]);
                         

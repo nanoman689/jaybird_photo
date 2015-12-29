@@ -7,5 +7,5 @@
 Log Into Flickr</button>
 </div>
 <div ng-repeat="photo in photos">
-    <img ng-click="galleryView()" ng-src="{{photo}}">
+    <img ng-click="galleryView($index)" ng-src="{{photo}}">
 </div> 
