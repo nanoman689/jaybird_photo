@@ -122,6 +122,6 @@ angular.module('myApp', ['ngRoute'])
     $scope.photos = flickrService.getPhotos();
     var photoId = $routeParams.photoId;
     $scope.url = $scope.photos[photoId];
-    $scope.next = $scope.photos[photosId+1];
+    var next = photoId + 1;
 }]);
                         
