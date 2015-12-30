@@ -1,6 +1,6 @@
 <div>
     <h1>Hello! It's the gallery page!</h1>
-    <button ng-click="url = url - 1" ng-init="count=0">prev</button>
+    <button ng-click="prev()">prev</button>
     <img ng-src={{url}}>
-    <button ng-click="url = url + 1" ng-init="count=0">next</button>
+    <button ng-click="next()">next</button>
 </div>
