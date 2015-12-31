@@ -39,3 +39,19 @@
     width: 25%
     
 }
+
+.photoList {
+  		padding: 0.25em;
+        overflow: hidden;
+		}
+		.photoList li {
+			float: left;
+			width: 50%;
+			padding: 0.25em;
+		}
+		.photoList img {
+			display: block;
+		}
+		.photoList li:nth-child(odd) {
+			clear: left;
+		}
