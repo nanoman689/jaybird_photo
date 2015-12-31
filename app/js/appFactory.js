@@ -82,16 +82,22 @@ angular.module('myApp', ['ngRoute'])
     $scope.frob = (location.search.split('frob=')[1]||'').split('&')[0];
     
     if($scope.frob !== ''){
-        flickrService.getToken($scope.frob).then(function(result){
-        $scope.token = result.token;
-        $scope.userID = result.userID;    
-        console.log($scope.token);
-        return flickrService.fetchPhotos($scope.userID, $scope.token);
-        }).then(function(result){
-            $scope.photos = result;
-            console.log($scope.photos);
-            }
-        );     
+        if (flickrService.getPhotos().length === 0){
+            flickrService.getToken($scope.frob).then(function(result){
+            $scope.token = result.token;
+            $scope.userID = result.userID;    
+            console.log($scope.token);
+            return flickrService.fetchPhotos($scope.userID, $scope.token);
+            }).then(function(result){
+                $scope.photos = result;
+                console.log($scope.photos);
+                }
+           );
+            
+        } else {
+            $scope.photos = flickrService.getPhotos();
+        }
+     
     }
     $scope.flickrLogIn=function(){
         var key="9bf438c9008c14b50c8114ee607b8752";
