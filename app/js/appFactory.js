@@ -125,6 +125,9 @@ angular.module('myApp', ['ngRoute'])
     $scope.next = function (){
         photoId = photoId + 1;
         $scope.url = $scope.photos[photoId];
+        console.log("The cureent photoId is :" + photoId);
+        console.log("The next photo is :" + next);
+        console.log($scope.url);
     }
 }]);
                         
