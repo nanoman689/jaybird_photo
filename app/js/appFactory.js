@@ -123,16 +123,21 @@ angular.module('myApp', ['ngRoute'])
     var photoId = $routeParams.photoId;
     $scope.url = $scope.photos[photoId];
     $scope.next = function (){
-        photoId = +photoId + 1;
-        $scope.url = $scope.photos[photoId];
-        console.log("The cureent photoId is :" + photoId);
-        console.log($scope.url);
+        if (photoId < photos.length - 1){
+            photoId = +photoId + 1;
+            $scope.url = $scope.photos[photoId];
+            console.log("The cureent photoId is :" + photoId);
+            console.log($scope.url);    
+        }
     }
     $scope.prev = function (){
-        photoId = +photoId - 1;
-        $scope.url = $scope.photos[photoId];
-        console.log("The cureent photoId is :" + photoId);
-        console.log($scope.url);
+        if (+photoId > 0){
+            photoId = +photoId - 1;
+            $scope.url = $scope.photos[photoId];
+            console.log("The cureent photoId is :" + photoId);
+            console.log($scope.url);    
+        }
+        
     }
     
 }]);
