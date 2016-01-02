@@ -1,4 +1,4 @@
-angular.module('myApp', ['ngRoute'])
+angular.module('myApp', ['ngRoute', 'ui.bootstrap'])
 .constant('secret', 'f70ebe3932a951df')
 .constant('key', '9bf438c9008c14b50c8114ee607b8752')
 .factory("flickrService", function($http, $q, secret, key) {
