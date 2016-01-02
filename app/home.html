@@ -6,11 +6,8 @@
 <button class="btn btn-primary" name="buttonName" value="buttonValue" ng-click="flickrLogIn()" ng-if="!frob">
 Log Into Flickr</button>
 </div>
-<div ng-repeat="photo in photos">
-    <ul class="photoList">
-    
-        <li><img ng-click="galleryView($index)" ng-src="{{photo}}"></li>
-
-    </ul>    
-        
-</div> 
+<ul class="photoList">
+    <div ng-repeat="photo in photos">
+        <li><img ng-click="galleryView($index)" ng-src="{{photo}}"></li>        
+    </div>
+</ul>    
