@@ -40,18 +40,18 @@
     
 }
 
-.photoList {
+ul.photoList.ng-scope {
   		padding: 0.25em;
         overflow: hidden;
 		}
-		.photoList li {
+		ul.photoList.ng-scope li {
 			float: left;
 			width: 50%;
 			padding: 0.25em;
 		}
-		.photoList img {
+		ul.photoList.ng-scope img {
 			display: block;
 		}
-		.photoList li:nth-child(odd) {
+		ul.photoList.ng-scope li:nth-child(odd) {
 			clear: left;
 		}
