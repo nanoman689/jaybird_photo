@@ -94,3 +94,8 @@ ul.photoList.ng-scope img {
   column-count:         1;
   }
 }
+
+
+.ng-scope {
+    text-align: center;
+}
