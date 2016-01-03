@@ -43,18 +43,19 @@
 ul.photoList.ng-scope {
     padding: 0.25em;
     overflow: hidden;
+    column-count: 5;
+    column-gap: 0px;  
 }
 
 ul.photoList.ng-scope li {
 	list-style:none;
     float: left;
     width: 50%;
+    padding: 0.5em;
 }
 
 ul.photoList.ng-scope img {
 	display: block;
-}
-
-ul.photoList.ng-scope li:nth-child(odd) {
-	clear: left;
+    width: 100% !important;
+    height: auto !important;
 }
