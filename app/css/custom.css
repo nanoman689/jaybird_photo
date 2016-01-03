@@ -43,6 +43,12 @@
 ul.photoList.ng-scope {
     padding: 0.25em;
     overflow: hidden;
+    
+    -webkit-column-count: 5;
+    -webkit-column-gap:   0px;
+    -moz-column-count:    5;
+    -moz-column-gap:      0px;
+    
     column-count: 5;
     column-gap: 0px;  
 }
