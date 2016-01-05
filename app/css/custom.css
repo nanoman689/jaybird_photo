@@ -56,8 +56,7 @@ ul.photoList.ng-scope {
 ul.photoList.ng-scope li {
 	list-style:none;
     float: left;
-    width: 50%;
-    padding: 0.5em;
+    padding: 0.125em;
 }
 
 ul.photoList.ng-scope img {
