@@ -10,6 +10,19 @@ angular.module('myApp', ['ngRoute', 'ui.bootstrap'])
         fetchPerson: function() {
       		//code to fetch person details
     	},
+        fetchInitialPhotos: function(){
+            var url ="https://api.flickr.com/services/rest/?method=flickr.galleries.getPhotos&api_key=9bf438c9008c14b50c8114ee607b8752&gallery_id=72157664357511023&format=json&nojsoncallback=1"; 
+            return $http.get(url)
+                .then(function(data, status, headers, config){
+                photos = [];
+                for ( r=0 ; r < data.data.photos.photo.length; r++ ){
+                    var url="https://farm"+data.data.photos.photo[r].farm+".staticflickr.com/"+data.data.photos.photo[r].server+"/"+data.data.photos.photo[r].id+"_"+data.data.photos.photo[r].secret+".jpg";
+                        photos.push(url);
+                        }
+                return photos;
+                
+            });
+        },
     	fetchPhotos: function(userID,authToken) {
       		//code to fetch photos of the person
             
@@ -77,6 +90,8 @@ angular.module('myApp', ['ngRoute', 'ui.bootstrap'])
     }
   };
 })
+
+
 .controller("flickrController", function(flickrService, $scope, $http, $q, $location){
         // User clicks on button to log into Flickr 
     $scope.frob = (location.search.split('frob=')[1]||'').split('&')[0];
@@ -98,6 +113,12 @@ angular.module('myApp', ['ngRoute', 'ui.bootstrap'])
             $scope.photos = flickrService.getPhotos();
         }
      
+    } else {
+        if (!($scope.photos && $scope.photos.length === 0)){
+            flickrService.fetchInitialPhotos().then(function(result){
+               $scope.photos = result; 
+            });
+        }
     }
     $scope.flickrLogIn=function(){
         var key="9bf438c9008c14b50c8114ee607b8752";

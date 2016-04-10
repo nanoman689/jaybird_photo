@@ -2,10 +2,13 @@
 
 <h1>Jaybird Photo Galley</h1>
 <p class="lead">Jaybird Photo Gallery<br> A simple gallery application using Flickr API.</p>
+    <h4>The images below are being pulled from a gallery located on Flickr and then being displayed in a gallery.<br>
+        If you want to use your own account, you can click the button below to log into Flickr using your Flickr account.</h4>
           
 <button class="btn btn-primary" name="buttonName" value="buttonValue" ng-click="flickrLogIn()" ng-if="!frob">
 Log Into Flickr</button>
 </div>
+
 <ul class="photoList">
     <li ng-repeat="photo in photos"><img ng-click="galleryView($index)" ng-src="{{photo}}"></li>        
 </ul>    
