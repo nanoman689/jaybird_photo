@@ -37,7 +37,15 @@
 .img {
     margin: auto;
     width: 25%
-    
+}
+
+img {
+    cursor: pointer;
+}
+
+img:hover {
+    background-color: white;
+    opacity: 0.15 !important;
 }
 
 ul.photoList.ng-scope {
