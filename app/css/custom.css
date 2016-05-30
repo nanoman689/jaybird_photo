@@ -34,18 +34,17 @@
    background: #1b435e;
 }
 
-.img {
-    margin: auto;
-    width: 25%
-}
-
 img {
     cursor: pointer;
+    transition: all 0.5s ease;
+    -webkit-transition: all 0.5s ease;
 }
 
 img:hover {
     background-color: white;
     opacity: 0.15 !important;
+    transform: scale(0.9);
+    -webkit-transform:scale(0.9);
 }
 
 ul.photoList.ng-scope {
